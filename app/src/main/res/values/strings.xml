@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InformationTheoryTest</string>
+    <string name="calculate">Calculate</string>
+    <string name="error">Error!</string>
+
+</resources>

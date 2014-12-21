@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="fraction_height">33dp</dimen>
+    <dimen name="fraction_width">36dp</dimen>
+    <dimen name="fraction_text_size">18dp</dimen>
+    <dimen name="fraction_bottom_padding">4dp</dimen>
+    <dimen name="divider_horizontal_offset">20dp</dimen>
+    <dimen name="divider_vertical_offset">14dp</dimen>
+    <dimen name="denominator_horizontal_offset">30dp</dimen>
+    <dimen name="denominator_vertical_offset">28dp</dimen>
+
+    <dimen name="result_text_size">20sp</dimen>
+
+
+</resources>

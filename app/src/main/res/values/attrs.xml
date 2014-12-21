@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FractionList">
+        <attr name="default_numerator" format="string"/>
+        <attr name="default_denominator" format="string"/>
+    </declare-styleable>
+</resources>

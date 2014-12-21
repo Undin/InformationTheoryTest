@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.warrior.informationtheory.FractionView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:divider="@drawable/divider"
+    android:showDividers="middle">
+
+    <EditText
+        android:id="@+id/numerator"
+        android:layout_width="@dimen/fraction_width"
+        android:layout_height="@dimen/fraction_height"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal|bottom"
+        android:inputType="number"
+        android:singleLine="true"
+        android:paddingBottom="@dimen/fraction_bottom_padding"
+        android:textSize="@dimen/fraction_text_size" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black" />
+
+    <EditText
+        android:id="@+id/denominator"
+        android:layout_width="@dimen/fraction_width"
+        android:layout_height="@dimen/fraction_height"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal|bottom"
+        android:inputType="number"
+        android:singleLine="true"
+        android:paddingBottom="@dimen/fraction_bottom_padding"
+        android:textSize="@dimen/fraction_text_size" />
+
+</com.warrior.informationtheory.FractionView>
