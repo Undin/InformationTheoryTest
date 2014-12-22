@@ -13,7 +13,7 @@
         custom:default_denominator="10"/>
 
     <EditText
-        android:id="@+id/coding"
+        android:id="@+id/fValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="100dp"
@@ -21,8 +21,18 @@
         android:layout_gravity="center_horizontal"
         android:textSize="@dimen/result_text_size"/>
 
+    <EditText
+        android:id="@+id/len"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/result_text_size"
+        android:text="5"/>
+
     <TextView
-        android:id="@+id/coding_result"
+        android:id="@+id/decoding_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/result_text_size"

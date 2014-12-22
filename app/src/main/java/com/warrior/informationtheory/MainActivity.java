@@ -16,12 +16,14 @@ public class MainActivity extends ListActivity {
             "Entropy",
             "Redundancy",
             "Average length",
-            "Arithmetic"};
+            "Arithmetic",
+            "Arithmetic Decode"};
     private static final Class[] ACTIVITIES = {
             EntropyActivity.class,
             RedundancyActivity.class,
             AverageLength.class,
-            ArithmeticActivity.class};
+            ArithmeticActivity.class,
+            ArithmeticDecodeActivity.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

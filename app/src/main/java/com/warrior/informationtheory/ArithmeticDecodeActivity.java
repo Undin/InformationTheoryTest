@@ -15,20 +15,22 @@ import java.util.List;
 /**
  * Created by warrior on 19.12.14.
  */
-public class ArithmeticActivity extends Activity {
+public class ArithmeticDecodeActivity extends Activity {
 
     private FractionList fractionList;
-    private EditText coding;
-    private TextView codingResult;
+    private EditText fValue;
+    private TextView decodingResult;
+    private EditText len;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.arithmetic);
+        setContentView(R.layout.arithmetic_decode);
 
         fractionList = (FractionList) findViewById(R.id.fractions);
-        coding = (EditText) findViewById(R.id.coding);
-        codingResult = (TextView) findViewById(R.id.coding_result);
+        fValue = (EditText) findViewById(R.id.fValue);
+        len = (EditText) findViewById(R.id.len);
+        decodingResult = (TextView) findViewById(R.id.decoding_result);
 
         findViewById(R.id.calculate).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,18 +44,19 @@ public class ArithmeticActivity extends Activity {
                     probabilities.put(symbol, fractions.get(i));
                 }
 
-                String str = coding.getText().toString();
+                String str = fValue.getText().toString();
+                int lenValue = Integer.parseInt(len.getText().toString());
                 String result = null;
                 if (str != null) {
                     try {
-                        result = Utils.arithmeticCoding(probabilities, str);
+                        result = Utils.arithmeticDecoding(probabilities, str, lenValue);
                     } catch (Exception e) {
                     }
                 }
                 if (result != null) {
-                    codingResult.setText(result);
+                    decodingResult.setText(result);
                 } else {
-                    codingResult.setText(R.string.error);
+                    decodingResult.setText(R.string.error);
                 }
             }
         });

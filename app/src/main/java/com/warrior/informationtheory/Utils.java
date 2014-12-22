@@ -157,22 +157,63 @@ public class Utils {
         return toBinaryString(f.add(g.divide(TWO)), digits);
     }
 
-    public static String toBinaryString(BigDecimal value, int digits) {
-        BigDecimal step = BigDecimal.ONE;
+    public static String arithmeticDecoding(LinkedHashMap<String, Fraction> probabilities, String fValue, int len) {
+        List<Pair<String, BigDecimal>> listProbabilities = new ArrayList<>(probabilities.size());
+        Map<String, Integer> indexes = new HashMap<>();
+        int k = 0;
+        for (Map.Entry<String, Fraction> entry : probabilities.entrySet()) {
+            listProbabilities.add(Pair.create(entry.getKey(),
+                    new BigDecimal(entry.getValue().getNumerator()).divide(new BigDecimal(entry.getValue().getDenominator()))));
+            indexes.put(entry.getKey(), k);
+            k++;
+        }
+
+        BigDecimal[] q = new BigDecimal[probabilities.size() + 1];
+        q[0] = BigDecimal.ZERO;
+        for (int i = 1; i < q.length - 1; i++) {
+            q[i] = q[i - 1].add(listProbabilities.get(i - 1).second);
+        }
+        q[q.length - 1] = BigDecimal.ONE;
+        BigDecimal s = BigDecimal.ZERO;
+        BigDecimal g = BigDecimal.ONE;
+        BigDecimal f = toDecimalValue(fValue);
+        String result = "";
+        for (int i = 0; i < len; i++) {
+            int j = 0;
+            while (s.add(q[j + 1].multiply(g)).compareTo(f) == -1) {
+                j++;
+            }
+            s = s.add(q[j].multiply(g));
+            String letter = "" + (char) ('a' + j);
+            g = g.multiply(listProbabilities.get(indexes.get(letter)).second);
+            result += letter;
+        }
+        return result;
+    }
+
+    public static BigDecimal toDecimalValue(String binaryString) {
+        BigDecimal result = BigDecimal.ZERO;
         BigDecimal two = new BigDecimal(2);
-        StringBuilder builder = new StringBuilder(digits);
-        BigDecimal tmpValue = BigDecimal.ZERO;
+        for (int i = 1; i <= binaryString.length(); i++) {
+            BigDecimal cur = new BigDecimal(binaryString.charAt(i - 1) - '0');
+            result = result.add(BigDecimal.ONE.divide(two.pow(i)).multiply(cur));
+        }
+        return result;
+    }
+
+    public static String toBinaryString(BigDecimal value, int digits) {
+        String result = "";
+        BigDecimal two = new BigDecimal(2);
         for (int i = 0; i < digits; i++) {
-            step = step.divide(two);
-            BigDecimal tmp = tmpValue.add(step);
-            if (tmp.compareTo(value) <= 0) {
-                builder.append(1);
-                tmpValue = tmp;
+            value = value.multiply(two);
+            if (value.compareTo(BigDecimal.ONE) >= 0) {
+                result += "1";
+                value = value.subtract(BigDecimal.ONE);
             } else {
-                builder.append(0);
+                result += "0";
             }
         }
-        return builder.toString();
+        return result;
     }
 
     public static Fraction averageLength(Map<String, Fraction> probabilities, Map<String, String> code) {
